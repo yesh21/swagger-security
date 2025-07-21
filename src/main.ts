@@ -9,9 +9,12 @@ async function bootstrap() {
     .setDescription('description') 
     .setVersion('1.0') 
     .build();
-
-  const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('docs', app, document);
+  
+  if (process.env.NODE_ENV !== 'production') {
+    console.log("working on " + process.env.NODE_ENV)
+    const document = SwaggerModule.createDocument(app, config);
+    SwaggerModule.setup('docs', app, document);
+  }
 
   await app.listen(process.env.PORT ?? 3000);
 }

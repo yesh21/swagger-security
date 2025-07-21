@@ -1,9 +1,21 @@
+import * as basicAuth from 'express-basic-auth';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
+    app.use(
+    ['/docs', '/docs-json'],
+    basicAuth({
+      challenge: true,
+      users: {
+        'usr': 'secret',  // please import them from env
+      },
+    }),
+  );
+
     const config = new DocumentBuilder()
     .setTitle('My API')
     .setDescription('description') 

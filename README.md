@@ -1,4 +1,4 @@
-# method 3: add secret query parameter in swagger API
+# method 4: add secret query parameter in swagger API
 
 ```
 ## secret parameter

@@ -24,8 +24,8 @@ export class AppModule implements NestModule {
       .forRoutes('*');
     consumer
       .apply(createSwaggerRoleMiddleware(['admin', 'devops']))
-      .exclude({ path: 'auth/login', method: RequestMethod.ALL })
-      .forRoutes({ path: '*', method: RequestMethod.ALL });
+      //.exclude({ path: 'auth/login', method: RequestMethod.ALL })
+      .forRoutes({ path: '/docs/json', method: RequestMethod.ALL });
   }
 }
 

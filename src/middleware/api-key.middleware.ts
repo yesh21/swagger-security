@@ -1,7 +1,7 @@
-# method 5: add API key to access
+import { Injectable, NestMiddleware, HttpException, HttpStatus } from '@nestjs/common';
+import { Request, Response, NextFunction } from 'express';
 
-```
-## secret parameter
+@Injectable()
 export class ApiKeyMiddleware implements NestMiddleware {
   use(req: Request, res: Response, next: NextFunction) {
     const apiKey = req.headers['x-docs-key'];
@@ -14,17 +14,3 @@ export class ApiKeyMiddleware implements NestMiddleware {
     next();
   }
 }
-
-```
-## to run the app
-
-```
-npm run start:dev 
-```
-
-Use it like this to access the Swagger UI 
-```
-http://localhost:3000/docs
-```
-
-- paste the API key in Swagger `/docs` to authorize the routes. 

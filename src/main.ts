@@ -8,6 +8,10 @@ async function bootstrap() {
     .setTitle('My API')
     .setDescription('description') 
     .setVersion('1.0') 
+    .addApiKey(
+      { type: 'apiKey', in: 'header', name: 'x-docs-key' },
+      'DocsKey' // This name will be used in @ApiSecurity()
+    )
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
